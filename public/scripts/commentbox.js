@@ -18,6 +18,19 @@ var CommentForm = React.createClass({
   }
 });
 
+var Comment = React.createClass({
+  render: function(){
+    return (
+        <div className="comment">
+          <h2 className="commentAuthor">
+            {this.props.author}
+          </h2>
+          {this.props.children}
+        </div>
+      );
+  }
+});
+
 var CommentBox = React.createClass({
   render: function(){
     return (
@@ -32,5 +45,5 @@ var CommentBox = React.createClass({
 });
 React.render(
   <CommentBox />,
-  document.getElementById('content');
+  document.getElementById('content')
   );
