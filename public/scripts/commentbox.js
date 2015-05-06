@@ -1,5 +1,5 @@
 var CommentList = React.createClass({
-  render: function{
+  render: function(){
     return(
         <div className="commentList">
           Heeelloo. Comment List.
@@ -16,7 +16,7 @@ var CommentForm = React.createClass({
         </div>
       )
   }
-})
+});
 
 var CommentBox = React.createClass({
   render: function(){
