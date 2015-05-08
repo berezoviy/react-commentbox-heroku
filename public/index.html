@@ -1,15 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
+
     <title>Comment box</title>
+
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/materialize.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  </head>
+  <body>
+  <header>
+  <nav>
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="index.html" class="brand-logo">Comment Box</a>
+              </div>
+    </div>
+  </nav>
+</header>
+    <div id="content" class="container"></div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.2/react.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.2/JSXTransformer.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
-  </head>
-  <body>
-    <div id="content"></div>
+    <script src="scripts/materialize.min.js"></script>
+
     <script type="text/jsx;harmony=true" src="scripts/commentbox.js"></script>
   </body>
 </html>

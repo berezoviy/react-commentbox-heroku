@@ -1,0 +1,9 @@
+nav, .page-footer{
+    background-color: #26a69a !important;
+}
+.content{
+  height: 100vh;
+}
+.form{
+  padding: 40px;
+}

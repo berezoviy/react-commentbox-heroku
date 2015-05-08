@@ -1,8 +1,9 @@
 var CommentList = React.createClass({
   render: function(){
-    var commentNodes = this.props.data.map(function(comment) {
+    var comments = this.props.data.reverse();
+    var commentNodes = comments.map(function(comment) {
       return(
-        <Comment author={comment.author}>
+        <Comment author={comment.author} key={comment.author} >
           {comment.text}
         </Comment>
         )
@@ -28,13 +29,22 @@ var CommentForm = React.createClass({
     React.findDOMNode(this.refs.text).value = '';
     return;
   },
+  success: function(){
+         Materialize.toast('Success.', 2000);
+  },
+
   render: function(){
+    var attributeId = "success";
     return (
-        <form className="commentForm" onSubmit={this.handleSubmit}>
+      <div className="card form z-depth-5">
+        <form className="commentForm right-align" name="CommentForm" onSubmit={this.handleSubmit}>
           <input type="text" placeholder="Your name" ref="author" />
           <input type="text" placeholder="Message" ref="text" />
-          <input type="submit" value="Post" />
+          <button type="submit" value="Post" className="btn waves-effect waves-light " id={attributeId} onClick={this.success.bind(this, attributeId)}>
+            Post<i className="mdi-content-send right"></i>
+          </button>
         </form>
+        </div>
       )
   }
 });
@@ -43,12 +53,17 @@ var Comment = React.createClass({
   render: function(){
     var rawMarkup = marked(this.props.children.toString(), {sanitize: true});
     return (
-        <div className="comment">
-          <h2 className="commentAuthor">
+      <div className="row comment">
+      <div className="col s12 ">
+        <div className="card-panel z-depth-2">
+          <span  dangerouslySetInnerHTML={{__html: rawMarkup}} />
+                    <h6 className="commentAuthor right-align">
             {this.props.author}
-          </h2>
-          <span dangerouslySetInnerHTML={{__html: rawMarkup}} />
+          </h6>
         </div>
+      </div>
+    </div>
+
       );
   }
 });
@@ -94,10 +109,16 @@ var CommentBox = React.createClass({
   render: function(){
     return (
         <div className="commentBox">
-          Hello! I am Comment Box.
-          <h1>Comments</h1>
+        <div className="row">
+          <div className="col s12 m6">
+            <h1>Comments</h1>
+          </div>
+          <div className="col s12 m6">
+          <CommentForm onCommentSubmit={this.handleCommentSubmit} />
+          </div>
+        </div>
           <CommentList data={this.state.data} />
-           <CommentForm onCommentSubmit={this.handleCommentSubmit} />
+
         </div>
       );
   }
